@@ -89,7 +89,7 @@ if not DEBUG:
         'default': {
             'ENGINE': 'django.db.backends.mysql',
             'NAME': 'gen3566$tentwenty',
-            'USER': 'gen3an566',
+            'USER': 'gen3566',
             'PASSWORD': 'genan3.0@',
             'HOST': 'gen3566.mysql.pythonanywhere-services.com',
         }
