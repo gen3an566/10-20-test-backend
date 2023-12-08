@@ -1,0 +1,33 @@
+from rest_framework.decorators import action, permission_classes, authentication_classes
+from rest_framework.response import Response
+from rest_framework import viewsets, mixins, status
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.permissions import IsAuthenticated
+
+from custom_permissions.IsStaffUser import SomeModelPermission, IsAdminUser
+from custom_permissions.CanJustReadPermissions import CanJustPostOrIsAdminPermission,CanJustReadOrIsAdminPermission
+from .models import Product
+from . import serializers
+
+class ProductsViewSet(viewsets.ModelViewSet):
+    """Manage Products in the db"""
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (CanJustReadOrIsAdminPermission,)
+    queryset = Product.objects.all().order_by('-id')
+    serializer_class = serializers.ProductsSerializer
+    pagination_class = None
+
+    def _params_to_int(self, qs):
+        """Convert a list of string IDs to a list of integers"""
+        return [int(str_id) for str_id in qs.split(",")]
+       
+    
+    def get_queryset(self):
+        """Retrieve the nfts from the query params sended"""
+
+        return Product.objects.all().order_by('-id')
+
+    def perform_create(self, serializer):
+        """Create a new object"""
+        instance = serializer.save()
+
