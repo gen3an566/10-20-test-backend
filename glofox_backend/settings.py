@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-1l&ks0lr7a#o4wi!fcr$=*3sa730j#yz_p)wb%$mfd$#uahym8'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -83,7 +83,20 @@ WSGI_APPLICATION = 'glofox_backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASES = {
+
+if not DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'gen3566$tentwenty',
+            'USER': 'gen3an566',
+            'PASSWORD': 'genan3.0@',
+            'HOST': 'gen3566.mysql.pythonanywhere-services.com',
+        }
+    }
+    
+else:
+    DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
