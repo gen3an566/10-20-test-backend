@@ -13,3 +13,13 @@ class ProductsSerializer(serializers.ModelSerializer):
         model = Product
         fields = "__all__"
         read_only_fields = ("id",)
+
+
+
+class ProductImageSerializer(serializers.ModelSerializer):
+    """Serializer for image uploading"""
+
+    class Meta:
+        model = Product
+        fields = ("id", "image")
+        read_only_fields = ("id",)
