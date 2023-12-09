@@ -15,7 +15,8 @@ class ProductsViewSet(viewsets.ModelViewSet):
     permission_classes = (CanJustReadOrIsAdminPermission,)
     queryset = Product.objects.all().order_by('-id')
     serializer_class = serializers.ProductsSerializer
-    pagination_class = None
+    # pagination_class = None
+    lookup_field = "id"
 
     def _params_to_int(self, qs):
         """Convert a list of string IDs to a list of integers"""
