@@ -56,7 +56,7 @@ class FacturationsViewSet(viewsets.ModelViewSet):
     def get_serializer_class(self):
         """Return appropriate serializer class"""
 
-        if self.action == "list":
+        if self.action in ["list","retrieve"]:
                   
             return serializers.FacturationDetailledSerializer
 
