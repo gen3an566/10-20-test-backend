@@ -26,9 +26,6 @@ SECRET_KEY = 'django-insecure-1l&ks0lr7a#o4wi!fcr$=*3sa730j#yz_p)wb%$mfd$#uahym8
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
-
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -94,7 +91,7 @@ if not DEBUG:
             'HOST': 'gen3566.mysql.pythonanywhere-services.com',
         }
     }
-    
+
 else:
     DATABASES = {
     'default': {
