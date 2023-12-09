@@ -63,18 +63,9 @@ class ManageUserRetriveUpdateAuthView(generics.RetrieveUpdateAPIView,
     """Manage the update/retrieve on authenticated user"""
     serializer_class = serializers.UserImageSerializer
     authentication_classes = (authentication.TokenAuthentication,)
-    permission_classes = (IsAdmin2,)
+    permission_classes = (CanJustReadOrIsAdminPermission,)
     queryset = User.objects.all()
     lookup_field = "id"
-
-    # def get_object(self):
-    #     '''
-    #     Helper method to get the object with given todo_id, and user_id
-    #     '''
-    #     try:
-    #         return User.objects.get(id=self.request.query_params)
-    #     except User.DoesNotExist:
-    #         return None
 
 class ManageUserListView(generics.ListAPIView):
     """Manage the list user view"""
